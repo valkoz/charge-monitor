@@ -1,5 +1,6 @@
 package com.github.valkoz.chargemonitor
 
+import android.graphics.Color
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         val airPollutionTask = LoadAirPollutionTask(this)
         airPollutionTask.execute()
+
+        val statusTask = LoadStatusTask(this)
+        statusTask.execute()
     }
 
     class LoadTemperatureTask(private val activity: MainActivity) : AsyncTask<String, Void, String>() {
@@ -98,6 +102,35 @@ class MainActivity : AppCompatActivity() {
             super.onPostExecute(result)
             val str = "$result ppm"
             activity.monitor_air_pollution.text = str
+        }
+
+    }
+
+    class LoadStatusTask(private val activity: MainActivity) : AsyncTask<String, Void, Int>() {
+
+        private val url : String = "https://6c1fe2e2.ngrok.io/status"
+
+        override fun doInBackground(vararg uri: String): Int? {
+
+            val connection = URL(url).openConnection() as HttpURLConnection
+            Log.e("responseCode", connection.responseCode.toString())
+            val text = connection.inputStream.bufferedReader().readText()
+            Log.e("response", text)
+            val fromJson = Gson().fromJson(text, com.github.valkoz.chargemonitor.Status::class.java)
+            return fromJson.status
+
+        }
+
+        override fun onPostExecute(result: Int?) {
+            super.onPostExecute(result)
+            if (result!! == 1) {
+                activity.status.text = "Is used"
+                activity.status.setTextColor(activity.resources.getColor(R.color.yellow))
+            }
+            else {
+                activity.status.text = "Availible"
+                activity.status.setTextColor(activity.resources.getColor(R.color.green))
+            }
         }
 
     }
