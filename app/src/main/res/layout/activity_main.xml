@@ -38,8 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@color/colorRed"
-            android:text="45 C"/>
+            android:textColor="@color/colorRed" />
 
 
         <TextView
@@ -50,8 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@color/colorRed"
-            android:text="42 %"/>
+            android:textColor="@color/colorRed" />
 
         <TextView
             android:id="@+id/monitor_air_pollution"
@@ -61,8 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@color/colorRed"
-            android:text="0.20 ppm"/>
+            android:textColor="@color/colorRed"/>
 
     </LinearLayout>
 

@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             val connection = URL(url).openConnection() as HttpURLConnection
             Log.e("responseCode", connection.responseCode.toString())
             val text = connection.inputStream.bufferedReader().readText()
+            Log.e("response", text)
             val fromJson = Gson().fromJson(text, Temperature::class.java)
             return fromJson.temperature
 
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             val connection = URL(url).openConnection() as HttpURLConnection
             Log.e("responseCode", connection.responseCode.toString())
             val text = connection.inputStream.bufferedReader().readText()
+            Log.e("response", text)
             val fromJson = Gson().fromJson(text, Humidity::class.java)
             return fromJson.humidity
 
@@ -86,8 +88,9 @@ class MainActivity : AppCompatActivity() {
             val connection = URL(url).openConnection() as HttpURLConnection
             Log.e("responseCode", connection.responseCode.toString())
             val text = connection.inputStream.bufferedReader().readText()
+            Log.e("response", text)
             val fromJson = Gson().fromJson(text, AirPollution::class.java)
-            return fromJson.airPollution
+            return fromJson.air_pollution
 
         }
 
