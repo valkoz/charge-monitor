@@ -1,6 +1,5 @@
 package com.github.valkoz.chargemonitor
 
-import android.graphics.Color
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +10,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class MainActivity : AppCompatActivity() {
+
+    private val baseUrl = "https://6c1fe2e2.ngrok.io"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     class LoadTemperatureTask(private val activity: MainActivity) : AsyncTask<String, Void, String>() {
 
-        private val url : String = "https://6c1fe2e2.ngrok.io/temperature"
+        private val url : String = activity.baseUrl + "/temperature"
 
         override fun doInBackground(vararg uri: String): String? {
 
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
     class LoadHumidityTask(private val activity: MainActivity) : AsyncTask<String, Void, String>() {
 
-        private val url : String = "https://6c1fe2e2.ngrok.io/humidity"
+        private val url : String = activity.baseUrl + "/humidity"
 
         override fun doInBackground(vararg uri: String): String? {
 
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     class LoadAirPollutionTask(private val activity: MainActivity) : AsyncTask<String, Void, String>() {
 
-        private val url : String = "https://6c1fe2e2.ngrok.io/air_pollution"
+        private val url : String = activity.baseUrl + "/air_pollution"
 
         override fun doInBackground(vararg uri: String): String? {
 
@@ -108,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     class LoadStatusTask(private val activity: MainActivity) : AsyncTask<String, Void, Int>() {
 
-        private val url : String = "https://6c1fe2e2.ngrok.io/status"
+        private val url : String = activity.baseUrl + "/status"
 
         override fun doInBackground(vararg uri: String): Int? {
 
