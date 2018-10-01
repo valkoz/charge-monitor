@@ -11,7 +11,7 @@ import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
-    private val baseUrl = "https://bf4d3194.ngrok.io"
+    private val baseUrl = "https://2f626a2c.ngrok.io"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
